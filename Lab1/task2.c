@@ -10,17 +10,17 @@ int btt=0;
 
 int main() {
 
-  DDRB = B00000111;
+  DDRB = 0b00000111;
  
   /*1. First we reset the control register to amke sure we start with everything disabled.*/
   TCCR1A = 0;                 // Reset entire TCCR1A to 0 
   TCCR1B = 0;                 // Reset entire TCCR1B to 0
  
   /*2. We set the prescalar to the desired value by changing the CS10 CS12 and CS12 bits. */  
-  TCCR1B |= B00000101;        //Set CS12 to 1 so we get prescalar 1024  
+  TCCR1B |= 0b00000101;        //Set CS12 to 1 so we get prescalar 1024  
   
   /*3. We enable compare match mode on register A*/
-  TIMSK1 |= B00000010;        //Set OCIE1A to 1 so we enable compare match A 
+  TIMSK1 |= 0b00000010;        //Set OCIE1A to 1 so we enable compare match A 
   
   /*4. Set the value of register A to 31250*/
   OCR1A = 25000;             //Finally we set compare register A to this value  
