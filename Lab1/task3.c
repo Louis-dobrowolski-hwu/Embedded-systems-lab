@@ -13,12 +13,12 @@ void setup() {
   /*1. First we reset the control register to amke sure we start with everything disabled.*/
   TCCR1A = 0;                 // Reset entire TCCR1A to 0 
   TCCR1B = 0;                 // Reset entire TCCR1B to 0
-  TCCR0A = 0;                 // Reset entire TCCR0A to 0 
-  TCCR0B = 0;                 // Reset entire TCCR0B to 0
+  //TCCR0A = 0;                 // Reset entire TCCR0A to 0 
+  //TCCR0B = 0;                 // Reset entire TCCR0B to 0
  
   /*2. We set the prescalar to the desired value by changing the CS10 CS12 and CS12 bits. */  
   TCCR1B |= 0b00000101;        //Set CS12 to 1 so we get prescalar 1024 
-  TCCR0B |= 0b00000101;        //Set CS12 to 1 so we get prescalar 1024 
+  //TCCR0B |= 0b00000101;        //Set CS12 to 1 so we get prescalar 1024 
   
   /*3. We enable compare match mode on register A*/
   /*TIMSK1 |= 0b00000010;        //Set OCIE1A to 1 so we enable compare match A 
@@ -26,9 +26,9 @@ void setup() {
   
   /*4. Set the value of register A to 31250*/
   OCR1A = 40000;
-  OCR0A = 0;              //Finally we set compare register A to this value  
+  //OCR0A = 0;              //Finally we set compare register A to this value  
   TCNT1 = 0;            // Mise du timer1 à zéro
-  TCNT0 = 0;
+  //TCNT0 = 0;
   
 }
 
