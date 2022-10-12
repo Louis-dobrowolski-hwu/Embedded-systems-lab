@@ -34,7 +34,7 @@ int main() {
   }
   return 0; 
 }
-//With the settings above, this IRS will trigger each 500ms.
+//With the settings above, this IRS will trigger each 1.6s.
 ISR(TIMER1_COMPA_vect){
   TCNT1  = 0;                  //First, set the timer back to 0 so it resets for next interrupt
   if (btt==1){
