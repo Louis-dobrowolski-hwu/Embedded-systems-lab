@@ -3,7 +3,7 @@ int r=1,ok=0;
 int i=0;
 
 
-void setup() {
+void main() {
   // put your setup code here, to run once:
   DDRB = 0b00000111;
   DDRD = 0b10000000;
@@ -24,9 +24,8 @@ void setup() {
   TCNT1 = 0;            // Mise du timer1 à zéro
   TCNT0 = 0;
   
-}
 
-void loop() {
+while(1) {
   // put your main code here, to run repeatedly:
   
   if ((PINB & 0b00001000)==0)
@@ -64,7 +63,7 @@ void loop() {
       btt=0;
         }}}
 }
-
+}
 void one(){
   PORTD = PORTD ^ (1<<7);
 }
