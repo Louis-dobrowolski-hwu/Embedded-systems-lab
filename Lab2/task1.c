@@ -2,6 +2,15 @@
 
 void delay_ms();
 
+
+int incr=0; 
+
+const float rapportCycliqueVoulu0  = 0.25;   // Soit 25%
+const float rapportCycliqueVoulu1 = 0.625;   // Soit 75%
+const float rapportCycliqueVoulu2 = 0.875;   // Soit 75%
+const float valeurMaxRegistreOCR1x = pow(2,8) - 1; 
+
+
 void setup(void)
 {
   Serial.begin(9600);
@@ -19,24 +28,8 @@ PORTD = 0x08;
 
   pinMode(11, INPUT);
 
-}
 
-/* 
-Calculations (for 1.6s): 
-  System clock 16 Mhz and Prescalar 1024;
-  Timer 1 speed = 16Mhz/1024 = 15.6 Khz    
-  Pulse time = 1/15.6 Khz =  64us  
-  Count up to = 1.6s / 64us = 25 000 (so this is the value the OCR register should have)*/  
-
-int incr=0; 
-
-const float rapportCycliqueVoulu0  = 0.25;   // Soit 25%
-const float rapportCycliqueVoulu1 = 0.625;   // Soit 75%
-const float rapportCycliqueVoulu2 = 0.875;   // Soit 75%
-const float valeurMaxRegistreOCR1x = pow(2,8) - 1; 
-
-
-void loop(){
+while(1){
   //if ((PINB & 0b00001000)==8)
   //Serial.println(digitalRead(11));
   if(digitalRead(11)==HIGH)
@@ -65,6 +58,7 @@ void loop(){
 
   } 
 
+}
 }
 
 
