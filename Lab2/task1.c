@@ -2,14 +2,12 @@
 
 void delay_ms();
 
-
 int incr=0; 
 
 const float rapportCycliqueVoulu0  = 0.25;   // Soit 25%
 const float rapportCycliqueVoulu1 = 0.625;   // Soit 75%
 const float rapportCycliqueVoulu2 = 0.875;   // Soit 75%
 const float valeurMaxRegistreOCR1x = pow(2,8) - 1; 
-
 
 void setup(void)
 {
@@ -26,29 +24,39 @@ PORTD = 0x08;
   TCCR0B |= 0b00000101;//prescaler de 1024//probléme
   TCCR0A = 0b10100011;// normal non inversé et Fast PWM 
 
-  pinMode(11, INPUT);
 
 
 while(1){
   //if ((PINB & 0b00001000)==8)
   //Serial.println(digitalRead(11));
-  if(digitalRead(11)==HIGH)
+  if ((PINB & 0b00000100)==4)
+  {
+    PORTD = PORTD ^ (1<<2);
+    PORTD = PORTD ^ (1<<3);
+  }
+  if ((PINB & 0b00001000)==8)
   { 
 
     switch (incr){    
-    case 0: 
+    case 0:
+    OCR0A = 0;
+    Serial.println(OCR0A);
+    incr=incr+1;
+    delay(100);
+    break;
+    case 1: 
     OCR0A = rapportCycliqueVoulu0 * valeurMaxRegistreOCR1x;
     Serial.println(OCR0A);
     incr=incr+1;
     delay(100);
     break;
-    case 1 :
+    case 2 :
       OCR0A = rapportCycliqueVoulu1 * valeurMaxRegistreOCR1x;
       incr=incr+1;
       Serial.println(OCR0A);
       delay(100);
       break;
-    case 2 : 
+    case 3 : 
       OCR0A = rapportCycliqueVoulu2 * valeurMaxRegistreOCR1x;
       incr=0;
       Serial.println(OCR0A);
@@ -58,7 +66,6 @@ while(1){
 
   } 
 
-}
 }
 
 
