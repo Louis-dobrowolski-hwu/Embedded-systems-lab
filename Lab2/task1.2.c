@@ -11,7 +11,7 @@ const float valeurMaxRegistreOCR1x = pow(2,8) - 1;
 
 void setup(void)
 {
-  Serial.begin(9600);
+
 //H-bridge direction control
 DDRD |= (1 << 2) | (1 << 3);
 DDRB = 0b00000000;
