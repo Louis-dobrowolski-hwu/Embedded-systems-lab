@@ -11,13 +11,13 @@ int main()
   {
     // put your main code here, to run repeatedly:
     unsigned char ReceivedChar = USART_receive(); // Wait until data is received
-    if (ReceivedChar == '0')
+    if (ReceivedChar == 'N')
     {
       PORTD &= ~ (1<<4);
       delay(200);
       USART_putstring("LED is off!\n");
     }
-    if (ReceivedChar == '1')
+    if (ReceivedChar == 'Y')
     {
       PORTD |= (1<<4);
       delay(200);
